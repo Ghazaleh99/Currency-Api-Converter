@@ -3,9 +3,11 @@ LABEL maintainer = "GH-Bitycle"
 
 ENV PYTHONUNBUFFERED 1
 
+WORKDIR /app
+
 COPY ./requirements.txt tmp/requirements.txt
 COPY ./app /app
-WORKDIR /app
+
 EXPOSE 8000
 
 RUN python -m venv /py && \
@@ -14,6 +16,8 @@ RUN python -m venv /py && \
     rm -rf /tmp && \
     adduser \
         django-user
+    # python manage.py crontab add\
+    # python manage.py crontab show
 
 ENV PATH="/py/bin:$PATH"
 

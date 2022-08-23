@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'currencyAppApi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'currencypostgre',
+        'NAME': config('POSTGRES_DB'),
         'USER': config('POSTGRES_USR'),
         'PASSWORD': config('POSTGRES_KEY'),
         'HOST': 'localhost',

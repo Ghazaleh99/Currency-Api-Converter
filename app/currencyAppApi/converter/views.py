@@ -27,11 +27,16 @@ class Addfavorite(APIView):
         fav_currency = get_object_or_404(Currency,pk=pk)
         print(fav_currency)
         if Userfav.objects.filter(user = request.user, favCur = fav_currency).exists():
-            return print("Already saved")
+            return Response(status=status.HTTP_200_OK)
         else:
-            new = Userfav.objects.get(user = request.user)
-            new.favCur.add(fav_currency)
-            new.save()
+            if Userfav.objects.filter(user = request.user).exists():
+                new = Userfav.objects.get(user = request.user)
+                new.favCur.add(fav_currency)
+                new.save()
+            else:
+                new = Userfav(user = request.user)
+                new.save()
+                new.favCur.add(fav_currency)
         return Response(status=status.HTTP_200_OK)
 
 class Removefavorite(APIView):
@@ -41,5 +46,5 @@ class Removefavorite(APIView):
         if Userfav.objects.filter(user = request.user, favCur = fav_currency).exists():
             new = Userfav.objects.get(user = request.user)
             new.favCur.remove(fav_currency)
-            # new.save()
+            new.save()
         return Response(status=status.HTTP_200_OK)

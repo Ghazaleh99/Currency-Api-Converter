@@ -15,7 +15,7 @@ def culist():
     data = response.json()
     symbols = data['currencies']
     return symbols
-
+    
 def exchangeRate():
     url1 = url+"live?"
     payload = {}
@@ -43,5 +43,5 @@ def getlist():
                 new.bs_sym_rate = exchange_rate[f'USD{i}']
             new.save()
 
-def scheduled_job():
-    getlist()
+# def scheduled_job():
+getlist()

@@ -124,9 +124,9 @@ REST_FRAMEWORK = {
     ],
 }
 
-CRONJOBS = [
-    ('*/1 * * * *', 'currencyAppApi.cron.scheduled_job')
-]
+# CRONJOBS = [
+#     ('*/1 * * * *', 'currencyAppApi.cron.scheduled_job')
+# ]
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
